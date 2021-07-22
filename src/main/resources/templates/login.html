@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Sawarabi+Mincho" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <title>SUPPORT TOOL :: Main</title>
+</head>
+
+<style>
+
+    main {
+        flex-grow: 1;
+    }
+
+    .login-area {
+        width: 350px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        min-height: 70vh;
+        justify-content: center;
+    }
+
+    .login-area h1{
+        font-weight: bold;
+        font-size: 26px;
+        margin-bottom: 28px;
+    }
+
+
+    .login-area input {
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+        margin-bottom: 14px;
+        font-size: 16px;
+    }
+
+    .login-btn {
+        width: 100%;
+        padding: 10px;
+        background-color: #293b68;
+        border: none;
+        color: white;
+        font-size: 18px;
+    }
+
+    .login-btn:hover {
+        cursor: pointer;
+    }
+</style>
+
+<body>
+    <div class="site-wrap">
+        <header>
+            <div class="topmenu">
+                <a href="index.html">管理画面メイン</a>
+                <a href="login.html">ログイン</a>
+            </div>
+        </header>
+        <main>
+            <section class="login-area">
+                <h1>ログイン</h1>
+                <form name="login_frm" action="logindo.html" method="post"  onsubmit="return false">
+                    <input type="text" name="userid" autocomplete="off" placeholder="ID">
+                    <input type="password" name="userpass" autocomplete="off" placeholder="PASSWORD">
+                    <button type="submit" class="login-btn" onclick="login()">ログイン</button>
+                </form>
+            </section>
+        </main>
+        <footer>
+            <span>
+                copyright Biz4m Corp. All rights reserved.
+            </span>
+        </footer>
+    </div>
+</body>
+
+<script>
+
+    function login() {
+        if(login_frm.userid.value=='') {
+            alert('IDを入力してください。');
+            login_frm.userid.focus();
+            return;
+        }else if(login_frm.userpass.value=='') {
+            alert('パスワードを入力してください。');
+            login_frm.userpass.focus();
+            return;
+        }
+
+        login_frm.submit();
+    }
+</script>
+
+</html>

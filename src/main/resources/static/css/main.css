@@ -1,0 +1,160 @@
+body {
+    font-family: "Sawarabi Mincho";
+    min-width: 980px;
+}
+
+button {
+    font-family: "Sawarabi Mincho";
+}
+
+header {
+    background-color: #293b68;
+}
+
+footer {
+
+    background-color: #293b68;
+    color: white;
+    text-align: center;
+
+}
+
+footer span {
+    display: inline-block;
+    padding: 45px 0;
+}
+
+.topmenu {
+    color: white;
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.topmenu a{
+    display: inline-block;
+    padding: 20px 10px;
+    font-size: 18px;
+}
+
+.topmenu a:nth-child(1) {
+    font-size: 22px;
+    font-weight: 400;
+}
+
+
+section {
+    width: 80%;
+    max-width: 1200px;
+    margin: 28px auto;
+}
+
+.section-title {
+    text-align: center;
+    background-color: #293b68;
+    margin-bottom: 24px;
+}
+
+.section-title span {
+    font-size: 18px;
+    display: inline-block;
+    padding: 8px 0;
+    color: white;
+}
+
+.article-list {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+section table {
+    text-align: center;
+    width: 100%;
+    font-size: 14.5px;
+    border-collapse: separate;
+    border-spacing: 14px;
+}
+
+.tr-top {
+    font-weight: bold;
+    color: #293b68;
+}
+.no {
+    width: 5%;
+}
+
+.title {
+    width: 45%;
+}
+
+.name {
+    width: 20%;
+}
+
+.date {
+    width: 15%;
+}
+
+.status {
+    width: 15%;
+}
+
+.paging-area span {
+    display: inline-block;
+    padding: 20px 0;
+    font-size: 16px;
+}
+
+
+
+.search-center select {
+    font-family: inherit;
+    padding: 3.5px;
+}
+
+.search-input {
+    border: none;
+    border-left: 3.5px solid #293b68;
+    padding : 5px 5px;
+    width: 230px;
+}
+
+
+.search-input:focus {
+    outline: none;
+}
+
+.search-btn {
+    display: inline-block;
+    background-color: #293b68;
+    border: none;
+    padding: 5px 10px;
+    color: white;
+}
+
+.search-btn:hover {
+    cursor: pointer;
+}
+.search-right {
+    text-align: right;
+    margin-bottom: 14px;
+}
+.search-right button {
+    background-color: #293b68;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+}
+
+.search-right button:hover {
+    cursor: pointer;
+}
+
+.site-wrap {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
