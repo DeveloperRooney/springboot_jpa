@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -49,103 +49,12 @@
                     <td class="date">更新日</td>
                     <td class="status">ステータス</td>
                 </tr>
-                <tr>
-                    <td class="no">1</td>
-                    <td class="title"><a href="/article/view">ECサイトのエラーの件</a></td>
-                    <td class="name">サポート１</td>
-                    <td class="date">18：00</td>
+                <tr th:each="article : ${articleList}">
+                    <td th:text="${article.id}" class="no"></td>
+                    <td class="title"><a th:text="${article.title}" th:href="@{/article/view(id=${article.id})}">ECサイトのエラーの件</a></td>
+                    <td th:text="${article.writer}" class="name">サポート１</td>
+                    <td th:text="${#temporals.format(article.regDate, 'yyyy-MM-dd HH:mm')}" class="date">18：00</td>
                     <td class="status">処理中</td>
-                </tr>
-                <tr>
-                    <td class="no">2</td>
-                    <td class="title"><a href="#">ECサイトのエラーの件</a></td>
-                    <td class="name">サポート１</td>
-                    <td class="date">18：00</td>
-                    <td class="status">処理中</td>
-                </tr>
-                <tr>
-                    <td class="no">3</td>
-                    <td class="title"><a href="#">ECサイトのエラーの件</a></td>
-                    <td class="name">サポート１</td>
-                    <td class="date">18：00</td>
-                    <td class="status">処理中</td>
-                </tr>
-                <tr>
-                    <td class="no">4</td>
-                    <td class="title"><a href="#">ECサイトのエラーの件</a></td>
-                    <td class="name">サポート１</td>
-                    <td class="date">18：00</td>
-                    <td class="status">処理中</td>
-                </tr>
-                <tr>
-                    <td class="no">5</td>
-                    <td class="title"><a href="#">ECサイトのエラーの件</a></td>
-                    <td class="name">サポート１</td>
-                    <td class="date">18：00</td>
-                    <td class="status">処理中</td>
-                </tr>
-                <tr>
-                    <td class="no">6</td>
-                    <td class="title"><a href="#">ECサイトのエラーの件</a></td>
-                    <td class="name">サポート１</td>
-                    <td class="date">18：00</td>
-                    <td class="status">処理中</td>
-                </tr>
-                <tr>
-                    <td class="no">7</td>
-                    <td class="title"><a href="#">ECサイトのエラーの件</a></td>
-                    <td class="name">サポート１</td>
-                    <td class="date">18：00</td>
-                    <td class="status">処理中</td>
-                </tr>
-                <tr>
-                    <td class="no">8</td>
-                    <td class="title"><a href="#">ECサイトのエラーの件</a></td>
-                    <td class="name">サポート１</td>
-                    <td class="date">18：00</td>
-                    <td class="status">処理中</td>
-                </tr>
-                <tr>
-                    <td class="no">10</td>
-                    <td class="title"><a href="#">ECサイトのエラーの件</a></td>
-                    <td class="name">サポート１</td>
-                    <td class="date">18：00</td>
-                    <td class="status">処理中</td>
-                </tr>
-                <tr>
-                    <td class="no">11</td>
-                    <td class="title"><a href="#">ECサイトのエラーの件</a></td>
-                    <td class="name">サポート１</td>
-                    <td class="date">18：00</td>
-                    <td class="status">処理中</td>
-                </tr>
-                <tr>
-                    <td class="no">12</td>
-                    <td class="title"><a href="#">ECサイトのエラーの件</a></td>
-                    <td class="name">サポート１</td>
-                    <td class="date">18：00</td>
-                    <td class="status">処理中</td>
-                </tr>
-                <tr>
-                    <td class="no">13</td>
-                    <td class="title"><a href="#">ECサイトのエラーの件</a></td>
-                    <td class="name">サポート１</td>
-                    <td class="date">18：00</td>
-                    <td class="status">処理中</td>
-                </tr>
-                <tr>
-                    <td class="no">14</td>
-                    <td class="title"><a href="#">ECサイトのエラーの件</a></td>
-                    <td class="name">サポート１</td>
-                    <td class="date">18：00</td>
-                    <td class="status">処理中</td>
-                </tr>
-                <tr>
-                    <td class="no">15</td>
-                    <td class="title"><a href="#">ECサイトのエラーの件</a></td>
-                    <td class="name">サポート１</td>
-                    <td class="date">18：00</td>
-                    <td class="status">処理完了</td>
                 </tr>
                 <tr class="paging-area">
                     <td colspan="5">

@@ -70,9 +70,9 @@
         <main>
             <section class="login-area">
                 <h1>ログイン</h1>
-                <form name="login_frm" action="logindo.html" method="post"  onsubmit="return false">
-                    <input type="text" name="userid" autocomplete="off" placeholder="ID">
-                    <input type="password" name="userpass" autocomplete="off" placeholder="PASSWORD">
+                <form name="login_frm" action="/user/login" method="post"  onsubmit="return false">
+                    <input type="text" name="userId" autocomplete="off" placeholder="ID">
+                    <input type="password" name="userPass" autocomplete="off" placeholder="PASSWORD">
                     <button type="submit" class="login-btn" onclick="login()">ログイン</button>
                 </form>
             </section>
@@ -88,13 +88,13 @@
 <script>
 
     function login() {
-        if(login_frm.userid.value=='') {
+        if(login_frm.userId.value=='') {
             alert('IDを入力してください。');
-            login_frm.userid.focus();
+            login_frm.userId.focus();
             return;
-        }else if(login_frm.userpass.value=='') {
+        }else if(login_frm.userPass.value=='') {
             alert('パスワードを入力してください。');
-            login_frm.userpass.focus();
+            login_frm.userPass.focus();
             return;
         }
 

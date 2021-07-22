@@ -96,7 +96,7 @@
         
         
         <section>
-                <form name="write_frm" action="" method="post" onsubmit="return false">
+                <form name="write_frm" action="/article/write" method="post" onsubmit="return false">
                     <div class="section-title">
                         <span>案件登録</span>
                     </div>
@@ -121,7 +121,7 @@
                     <div class="article-write">
                         <div>その他</div>
                         <div>
-                            <textarea name="etc" class="etc"></textarea>
+                            <textarea name="content" class="etc"></textarea>
                         </div>
                     </div>
                     <div class="send-area">
@@ -148,9 +148,9 @@
             alert("タイトルを入力してください。");
             write_frm.title.focus();
             return;
-        }else if(write_frm.etc.value == "") {
+        }else if(write_frm.content.value == "") {
             alert("内容を入力してください。");
-            write_frm.etc.focus();
+            write_frm.content.focus();
             return;
         }
 
