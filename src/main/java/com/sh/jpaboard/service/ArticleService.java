@@ -3,7 +3,12 @@ package com.sh.jpaboard.service;
 import com.sh.jpaboard.entity.Article;
 import com.sh.jpaboard.repository.ArticleRepository;
 import com.sh.jpaboard.vo.ArticleVo;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -43,8 +48,16 @@ public class ArticleService {
         return articleVo;
     }
 
-    public List<Article> articleList() {
-        List<Article> list = articleRepository.findAll();
-        return list;
+    public Page<Article> articleList(Pageable pageable) {
+        Page<Article> articles = articleRepository.findAll(pageable);
+        return articles;
+    }
+
+    public Article searchTitle(String title) {
+
+        Article article = articleRepository.findByTitle(title);
+
+        return article;
+
     }
 }

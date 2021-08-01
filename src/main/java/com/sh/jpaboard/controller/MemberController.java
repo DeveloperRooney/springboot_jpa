@@ -32,8 +32,6 @@ public class MemberController {
 
         int result = memberService.login(memberVo);
 
-
-
         if (result == 1) {
             System.out.println("로그인 성공");
             return "redirect:/";
@@ -41,8 +39,6 @@ public class MemberController {
             System.out.println("로그인 실패");
             return "redirect:/";
         }
-
-
     }
 
 }

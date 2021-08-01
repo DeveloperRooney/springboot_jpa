@@ -125,18 +125,15 @@
                 </div>
                 <div class="article-write">
                     <div>タイトル</div>
-                    <div>
+                    <div th:text="${article.title}">
                         ECサイトのエラーの件
                     </div>
                 </div>
                 <div class="article-write contents">
                     <div>その他</div>
                     <div>
-                        <p>
-                            内容を入力してください。
-                            
-                            
-                            
+                        <p th:text="${article.content}">
+
                         </p>
                     </div>
                 </div>

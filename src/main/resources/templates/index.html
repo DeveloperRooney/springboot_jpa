@@ -24,6 +24,10 @@
         justify-content: center;
     }
 
+    .page {
+        padding : 0 2px;
+    }
+
 </style>
 
 <body>
@@ -53,13 +57,13 @@
                     <td th:text="${article.id}" class="no"></td>
                     <td class="title"><a th:text="${article.title}" th:href="@{/article/view(id=${article.id})}">ECサイトのエラーの件</a></td>
                     <td th:text="${article.writer}" class="name">サポート１</td>
-                    <td th:text="${#temporals.format(article.regDate, 'yyyy-MM-dd HH:mm')}" class="date">18：00</td>
+                    <td th:text="${#temporals.format(article.regDate, 'MM-dd HH:mm')}" class="date">18：00</td>
                     <td class="status">処理中</td>
                 </tr>
                 <tr class="paging-area">
                     <td colspan="5">
-                        <span>
-                            1
+                        <span th:each="x : ${#numbers.sequence(startPage, endPage)}">
+                            <a th:text="${x}" th:href="@{/article/list(page=${x}-1)}" class="page"></a>
                         </span>
                     </td>
                 </tr>

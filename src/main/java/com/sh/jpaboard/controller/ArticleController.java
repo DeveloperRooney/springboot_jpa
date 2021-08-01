@@ -3,15 +3,18 @@ package com.sh.jpaboard.controller;
 import com.sh.jpaboard.entity.Article;
 import com.sh.jpaboard.service.ArticleService;
 import com.sh.jpaboard.vo.ArticleVo;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-
-import java.util.List;
-import java.util.Optional;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/article")
 public class ArticleController {
 
     private ArticleService articleService;
@@ -20,16 +23,21 @@ public class ArticleController {
         this.articleService = articleService;
     }
 
+    @GetMapping("/list")
+    public String index(Model model, @PageableDefault(sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
 
-    @GetMapping("/")
-    public String index(Model model) {
+        Page<Article> articleList = articleService.articleList(pageable);
 
-        model.addAttribute("articleList", articleService.articleList());
+        int startPage = Math.max(1, articleList.getPageable().getPageNumber() - 4);
+        int endPage = Math.min(articleList.getTotalPages(), articleList.getPageable().getPageNumber() + 4);
 
+        model.addAttribute("articleList", articleList);
+        model.addAttribute("startPage", startPage);
+        model.addAttribute("endPage", endPage);
         return "index";
     }
 
-    @GetMapping("/article/view")
+    @GetMapping("/view")
     public String articleView(Model model, long id) {
 
         ArticleVo article = articleService.articleView(id);
@@ -42,20 +50,14 @@ public class ArticleController {
         return "article_view";
     }
 
-    @GetMapping("/article/write")
+    @GetMapping("/write")
     public String articleWrite() {
 
         return "article_write";
     }
 
-    @PostMapping("/article/write")
+    @PostMapping("/write")
     public String articleWrite(ArticleVo articleVo) {
-
-        System.out.println(articleVo.getTitle());
-        System.out.println(articleVo.getContent());
-
-        articleVo.setWriter(1L);
-        articleService.insert(articleVo);
 
         return "redirect:/";
     }

@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 public class ArticleVo {
 
     private Long id;
-    private Long writer;
+    private String writer;
     private LocalDateTime regDate;
     private LocalDateTime updateDate;
     private String title;
