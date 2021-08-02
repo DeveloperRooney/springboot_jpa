@@ -59,4 +59,15 @@ public class ArticleService {
 
         return articles;
     }
+
+    public void articleDelete(long id) {
+
+        Optional<Article> article = articleRepository.findById(id);
+
+        article.ifPresent(selected -> {
+            articleRepository.delete(selected);
+
+        });
+
+    }
 }

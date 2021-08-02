@@ -75,4 +75,12 @@ public class ArticleController {
         return "redirect:/";
     }
 
+    @GetMapping("delete")
+    public String articleDelete(long id, Pageable pageable) {
+
+        articleService.articleDelete(id);
+
+        return "redirect:/article/list";
+    }
+
 }
