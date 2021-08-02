@@ -27,18 +27,14 @@ public class MemberController {
     @PostMapping("/user/login")
     public String login(MemberVo memberVo) {
 
+        System.out.println("넘어옴");
+        
         System.out.println(memberVo.getUserId());
         System.out.println(memberVo.getUserPass());
 
-        int result = memberService.login(memberVo);
+        memberService.loadUserByUsername(memberVo.getUserId());
 
-        if (result == 1) {
-            System.out.println("로그인 성공");
-            return "redirect:/";
-        }else {
-            System.out.println("로그인 실패");
-            return "redirect:/";
-        }
+        return "redirect:/article/list";
     }
 
 }
