@@ -68,30 +68,22 @@
         text-align: center;
     }
 
-    .send-area button{
-        display: inline-block;
-        background-color: #293b68;
-        border: none;
-        width: 100px;
-        height: 50px;
-        color : white;
-        font-size: 14px;
-        font-weight: bold;
-        
-    }
-
-    .send-area button:hover {
-        cursor: pointer;
-    }
-
-    .send-area button:nth-child(1) {
-        background-color: white;
-        border: 2px solid red;
-        color: red;
-    }
-
     .contents {
         min-height: 220px;
+    }
+
+    .delete-btn , .update-btn{
+        display: inline-block;
+        box-sizing: border-box;
+        padding : 15px 20px;
+        border: 2px solid red;
+        color : red;
+    }
+
+    .update-btn {
+        border : 2px solid #293b68;
+        color : white;
+        background-color: #293b68;
     }
 
 </style>
@@ -139,8 +131,8 @@
                     </div>
                 </div>
                 <div class="send-area">
-                    <button type="button">削除</button>
-                    <button type="submit" onclick="send()">修正</button>
+                    <a class="delete-btn" type="button" th:href="@{/article/delete(id=${article.id})}">削除</a>
+                    <a class="update-btn">修正</a>
                 </div>
             </form>
         </section>
@@ -151,22 +143,4 @@
         </footer>
     </div>
     </body>
-    
-    <script>
-    function send() {
-        if(write_frm.title.value == "") {
-            alert("IDを入力してください。");
-            write_frm.title.focus();
-            return;
-        }else if(write_frm.etc.value == "") {
-            alert("パスワードを入力してください。");
-            write_frm.etc.focus();
-            return;
-        }
-
-        write_frm.submit();
-    }
-
-</script>
-
 </html>
