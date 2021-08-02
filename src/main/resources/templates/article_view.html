@@ -68,7 +68,7 @@
         text-align: center;
     }
 
-    .send-area button, a{
+    .send-area button{
         display: inline-block;
         background-color: #293b68;
         border: none;
@@ -84,7 +84,7 @@
         cursor: pointer;
     }
 
-    .send-area a {
+    .send-area button:nth-child(1) {
         background-color: white;
         border: 2px solid red;
         color: red;
@@ -139,7 +139,7 @@
                     </div>
                 </div>
                 <div class="send-area">
-                    <a th:href="@{/article/delete(id=${article.id})}">削除</a>
+                    <button type="button">削除</button>
                     <button type="submit" onclick="send()">修正</button>
                 </div>
             </form>
