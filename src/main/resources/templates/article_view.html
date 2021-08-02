@@ -100,7 +100,7 @@
 
         <header>
             <div class="topmenu">
-                <a href="/">管理画面メイン</a>
+                <a href="/article/list">管理画面メイン</a>
                 <a href="/user/login">ログイン</a>
             </div>
         </header>
@@ -113,15 +113,15 @@
                 </div>
                 <div class="article-write">
                     <div>NO</div>
-                    <div>1</div>
+                    <div th:text="${article.id}">1</div>
                 </div>
                 <div class="article-write">
                     <div>作成日時</div>
-                    <div>1</div>
+                    <div th:text="${#temporals.format(article.regDate, 'yyyy-MM-dd HH:mm')}">1</div>
                 </div>
                 <div class="article-write">
                     <div>作成者</div>
-                    <div>1</div>
+                    <div th:text="${article.writer}"></div>
                 </div>
                 <div class="article-write">
                     <div>タイトル</div>

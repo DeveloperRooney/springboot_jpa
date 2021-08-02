@@ -34,7 +34,7 @@
     <div class="site-wrap">
         <header>
             <div class="topmenu">
-                <a href="/">管理画面メイン</a>
+                <a href="/article/list">管理画面メイン</a>
                 <a href="/user/login">ログイン</a>
             </div>
         </header>
@@ -43,6 +43,7 @@
                 <span>新着情報</span>
             </div>
             <div class="search-right">
+                <span class="articleCount">データ ：<span th:text="${totalArticle}"></span>件</span>
                 <button onClick="location.href='/article/write'">案件作成</button>
             </div>
             <table>
@@ -63,7 +64,12 @@
                 <tr class="paging-area">
                     <td colspan="5">
                         <span th:each="x : ${#numbers.sequence(startPage, endPage)}">
-                            <a th:text="${x}" th:href="@{/article/list(page=${x}-1)}" class="page"></a>
+                            <span th:if="${x == nowPage}">
+                                <a th:text="${x}" class="page" style="color: red"></a>
+                            </span>
+                            <span th:if="${x != nowPage}">
+                                <a th:text="${x}" th:href="@{/article/list(page=${x}-1, keyword=${param.keyword})}" class="page"></a>
+                            </span>
                         </span>
                     </td>
                 </tr>
@@ -74,13 +80,8 @@
         
                             </div>
                             <div class="search-center">
-                                <form name="search_frm" action="" method="get" onsubmit="return false">
-                                    <select name="search_select">
-                                        <option value="name">作成者</option>
-                                        <option value="title">タイトル</option>
-                                        <option value="content">内容</option>
-                                    </select>
-                                    <input name="search_word" type="text" class="search-input">
+                                <form name="search_frm" action="/article/list" method="get" onsubmit="return false">
+                                    <input name="keyword" type="text" class="search-input">
                                     <button type="submit" class="search-btn" autocomplete="off" onclick="search()">検索</button>
                                 </form>
                                 </div>
@@ -99,11 +100,13 @@
 
 <script>
     function search() {
-        if (search_frm.search_word.value == "") {
+        if (search_frm.keyword.value == "") {
             alert("検索する内容を入力してください。");
-            search_frm.search_word.focus();
+            search_frm.keyword.focus();
             return;
         }
+        console.log('if문 빠져나옴');
+        search_frm.submit();
     }
 
 </script>

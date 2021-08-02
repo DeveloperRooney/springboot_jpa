@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/article")
@@ -24,14 +25,29 @@ public class ArticleController {
     }
 
     @GetMapping("/list")
-    public String index(Model model, @PageableDefault(sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+    public String index(Model model, @PageableDefault(sort = "id", direction = Sort.Direction.DESC) Pageable pageable,
+                        @RequestParam(name = "keyword", required = false) String keyword) {
 
-        Page<Article> articleList = articleService.articleList(pageable);
+        Page<Article> articleList = null;
+
+        if(keyword != null) {
+            articleList = articleService.articleSearchList(keyword, pageable);
+        }else {
+            articleList = articleService.articleList(pageable);
+        }
 
         int startPage = Math.max(1, articleList.getPageable().getPageNumber() - 4);
-        int endPage = Math.min(articleList.getTotalPages(), articleList.getPageable().getPageNumber() + 4);
 
+        int endPage = 0;
+        if((articleList.getPageable().getPageNumber() + 4) < 10) {
+            endPage = Math.min(10, articleList.getTotalPages());
+        }else {
+            endPage = Math.min(articleList.getTotalPages(), articleList.getPageable().getPageNumber() + 4);
+        }
+
+        model.addAttribute("totalArticle", articleList.getTotalElements());
         model.addAttribute("articleList", articleList);
+        model.addAttribute("nowPage", pageable.getPageNumber() + 1);
         model.addAttribute("startPage", startPage);
         model.addAttribute("endPage", endPage);
         return "index";
@@ -41,9 +57,6 @@ public class ArticleController {
     public String articleView(Model model, long id) {
 
         ArticleVo article = articleService.articleView(id);
-
-        System.out.println(article.getContent());
-        System.out.println(article.getTitle());
 
         model.addAttribute("article", article);
 

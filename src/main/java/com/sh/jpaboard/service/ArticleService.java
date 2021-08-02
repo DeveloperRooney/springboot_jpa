@@ -53,11 +53,10 @@ public class ArticleService {
         return articles;
     }
 
-    public Article searchTitle(String title) {
+    public Page<Article> articleSearchList(String title, Pageable pageable) {
+        Page<Article> articles = articleRepository
+                .findByTitleContainingOrContentContainingOrWriterContaining(title, title, title, pageable);
 
-        Article article = articleRepository.findByTitle(title);
-
-        return article;
-
+        return articles;
     }
 }

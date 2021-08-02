@@ -139,9 +139,17 @@ section table {
     cursor: pointer;
 }
 .search-right {
-    text-align: right;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 14px;
 }
+
+.search-right .articleCount{
+    display: inline-block;
+    margin-left : 1.2%;
+}
+
 .search-right button {
     background-color: #293b68;
     border: none;
