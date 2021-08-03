@@ -3,6 +3,8 @@ package com.sh.jpaboard.service;
 import com.sh.jpaboard.entity.Member;
 import com.sh.jpaboard.repository.MemberRepository;
 import com.sh.jpaboard.vo.MemberVo;
+import lombok.extern.log4j.Log4j;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -25,6 +27,8 @@ public class MemberService implements UserDetailsService {
         Optional<Member> optMember = memberRepository.findByUserIdAndUserPass(memberVo.getUserId(), memberVo.getUserPass());
 
         Member member = new Member();
+
+
 
         if(optMember.isPresent()) {
             member = optMember.get();

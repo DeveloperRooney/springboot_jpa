@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -70,9 +70,9 @@
         <main>
             <section class="login-area">
                 <h1>ログイン</h1>
-                <form name="login_frm" action="/user/login" method="post"  onsubmit="return false">
-                    <input type="text" name="userId" autocomplete="off" placeholder="ID">
-                    <input type="password" name="userPass" autocomplete="off" placeholder="PASSWORD">
+                <form name="login_frm" th:action="@{/user/login}" method="post"  onsubmit="return false">
+                    <input type="text" name="username" autocomplete="off" placeholder="ID">
+                    <input type="password" name="password" autocomplete="off" placeholder="PASSWORD">
                     <button type="submit" class="login-btn" onclick="login()">ログイン</button>
                 </form>
             </section>
@@ -88,13 +88,13 @@
 <script>
 
     function login() {
-        if(login_frm.userId.value=='') {
+        if(login_frm.username.value=='') {
             alert('IDを入力してください。');
-            login_frm.userId.focus();
+            login_frm.username.focus();
             return;
-        }else if(login_frm.userPass.value=='') {
+        }else if(login_frm.password.value=='') {
             alert('パスワードを入力してください。');
-            login_frm.userPass.focus();
+            login_frm.password.focus();
             return;
         }
 
