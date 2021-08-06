@@ -36,14 +36,15 @@ public class ArticleController {
             articleList = articleService.articleList(pageable);
         }
 
-        int startPage = Math.max(1, articleList.getPageable().getPageNumber() - 4);
 
         int endPage = 0;
         if((articleList.getPageable().getPageNumber() + 4) < 10) {
             endPage = Math.min(10, articleList.getTotalPages());
         }else {
-            endPage = Math.min(articleList.getTotalPages(), articleList.getPageable().getPageNumber() + 4);
+            endPage = Math.min(articleList.getTotalPages(), articleList.getPageable().getPageNumber() + 5);
         }
+
+        int startPage = Math.max(1, endPage-9);
 
         model.addAttribute("totalArticle", articleList.getTotalElements());
         model.addAttribute("articleList", articleList);
