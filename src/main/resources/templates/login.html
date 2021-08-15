@@ -46,6 +46,7 @@
     }
 
     .login-btn {
+        margin-top: 14px;
         width: 100%;
         padding: 10px;
         background-color: #293b68;
@@ -57,6 +58,13 @@
     .login-btn:hover {
         cursor: pointer;
     }
+
+
+    .login-msg {
+        color: red;
+        text-align: left;
+    }
+
 </style>
 
 <body>
@@ -70,9 +78,10 @@
         <main>
             <section class="login-area">
                 <h1>ログイン</h1>
-                <form name="login_frm" th:action="@{/user/login}" method="post"  onsubmit="return false">
-                    <input type="text" name="username" autocomplete="off" placeholder="ID">
-                    <input type="password" name="password" autocomplete="off" placeholder="PASSWORD">
+                <form name="login_frm" th:action="@{/user/auth}" method="post"  onsubmit="return false">
+                    <input type="text" name="userId" autocomplete="off" placeholder="ID">
+                    <input type="password" name="userPass" autocomplete="off" placeholder="PASSWORD">
+                    <div class="login-msg" th:if="${param.error}">ID, PASSWORDを確認してください。</div>
                     <button type="submit" class="login-btn" onclick="login()">ログイン</button>
                 </form>
             </section>
@@ -88,13 +97,13 @@
 <script>
 
     function login() {
-        if(login_frm.username.value=='') {
+        if(login_frm.userId.value=='') {
             alert('IDを入力してください。');
-            login_frm.username.focus();
+            login_frm.userId.focus();
             return;
-        }else if(login_frm.password.value=='') {
+        }else if(login_frm.userPass.value=='') {
             alert('パスワードを入力してください。');
-            login_frm.password.focus();
+            login_frm.userPass.focus();
             return;
         }
 

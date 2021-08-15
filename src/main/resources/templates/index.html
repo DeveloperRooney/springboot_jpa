@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -32,12 +32,15 @@
 
 <body>
     <div class="site-wrap">
+
         <header>
             <div class="topmenu">
                 <a href="/article/list">管理画面メイン</a>
-                <a href="/user/login">ログイン</a>
+                <a sec:authorize="isAnonymous()" th:href="@{/user/login}">ログイン</a>
+                <a sec:authorize="isAuthenticated()" th:href="@{/user/logout}">ログアウト</a>
             </div>
         </header>
+
         <section>
             <div class="section-title">
                 <span>新着情報</span>

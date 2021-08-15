@@ -26,17 +26,5 @@ public class MemberController {
         return "login";
     }
 
-    @PostMapping("/user/login")
-    public String login(String username, String password) {
-
-        System.out.println("넘어옴");
-        return "redirect:/article/list";
-    }
-
-    @GetMapping
-    public String logout(HttpServletRequest request, HttpServletResponse response) {
-
-        return "redirect:/article/list";
-    }
 
 }
