@@ -1,0 +1,7 @@
+<header>
+    <div class="topmenu">
+        <a href="/article/list">管理画面メイン</a>
+        <a sec:authorize="isAnonymous()" th:href="@{/user/login}">ログイン</a>
+        <a sec:authorize="isAuthenticated()" th:href="@{/user/logout}">ログアウト</a>
+    </div>
+</header>

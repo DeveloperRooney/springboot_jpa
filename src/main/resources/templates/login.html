@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -69,12 +69,9 @@
 
 <body>
     <div class="site-wrap">
-        <header>
-            <div class="topmenu">
-                <a href="/article/list">管理画面メイン</a>
-                <a href="/user/login">ログイン</a>
-            </div>
-        </header>
+
+        <header th:replace="/include/topmenu.html :: header"></header>
+
         <main>
             <section class="login-area">
                 <h1>ログイン</h1>
@@ -86,11 +83,9 @@
                 </form>
             </section>
         </main>
-        <footer>
-            <span>
-                copyright Biz4m Corp. All rights reserved.
-            </span>
-        </footer>
+
+        <footer th:replace="include/footer.html"></footer>
+
     </div>
 </body>
 

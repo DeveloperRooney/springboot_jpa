@@ -91,15 +91,8 @@
 
     <div class="site-wrap">
 
-        <header>
-            <div class="topmenu">
-                <a href="/article/list">管理画面メイン</a>
-                <a sec:authorize="isAnonymous()" th:href="@{/user/login}">ログイン</a>
-                <a sec:authorize="isAuthenticated()" th:href="@{/user/logout}">ログアウト</a>
-            </div>
-        </header>
-        
-        
+        <header th:replace="/include/topmenu.html :: header"></header>
+
         <section>
             <form name="write_frm" action="" method="post" onsubmit="return false">
                 <div class="section-title">
@@ -137,11 +130,7 @@
                 </div>
             </form>
         </section>
-        <footer>
-            <span>
-                copyright Biz4m Corp. All rights reserved.
-            </span>
-        </footer>
+        <footer th:replace="include/footer.html"></footer>
     </div>
     </body>
 </html>
